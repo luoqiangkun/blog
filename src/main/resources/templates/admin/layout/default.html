@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Fixed Sidebar</title>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/admin/plugins/fontawesome-free/css/all.min.css}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" th:href="@{/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+  <!-- bootstrap table  -->
+  <link rel="stylesheet" th:href="@{/admin/plugins/bootstrap-table/bootstrap-table.min.css}">
+  <!-- sweetalert2  -->
+  <link rel="stylesheet" th:href="@{/admin/plugins/sweetalert2/sweetalert2.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{/admin/css/adminlte.min.css}">
+  <link rel="stylesheet" th:href="@{/admin/css/app.css}">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" layout:fragment="content"></div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+</body>
+<!-- jQuery -->
+<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/admin/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/admin/plugins/jquery-serializejson/jquery.serializejson.min.js}"></script>
+<script th:src="@{/admin/plugins/jquery-validation/additional-methods.min.js}"></script>
+<script th:src="@{/admin/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script th:src="@{/admin/plugins/sweetalert2/sweetalert2.js}"></script>
+<script th:src="@{/admin/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/admin/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/admin/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{/admin/js/demo.js}"></script>
+<script th:src="@{/admin/js/app.js}"></script>
+<th:block layout:fragment="asset">
+</th:block>
+</html>

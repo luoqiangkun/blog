@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luospace.blog.dao.ArticleCategoryMapper" >
+    <select id="select" parameterType="Map" resultType="com.luospace.blog.entity.ArticleCategory"  >
+        SELECT *
+        FROM article_category
+        <where>
+            <if test="categoryName != null">
+                category_name like '%#{categoryName}%'
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="com.luospace.blog.entity.ArticleCategory" useGeneratedKeys="true" keyProperty="categoryId">
+        insert into article_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="categoryName != null">
+                category_name,
+            </if>
+            <if test="categorySort != null">
+                category_sort,
+            </if>
+            <if test="categoryEnabled != null">
+                category_enabled,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="categoryName != null">
+                #{categoryName},
+            </if>
+            <if test="categorySort != null">
+                #{categorySort},
+            </if>
+            <if test="categoryEnabled != null">
+                #{categoryEnabled},
+            </if>
+        </trim>
+
+    </insert>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.luospace.blog.entity.ArticleCategory">
+        select *
+        from article_category
+        where category_id = #{categoryId}
+    </select>
+    <update id="updateByPrimaryKey" parameterType="com.luospace.blog.entity.ArticleCategory">
+        update article_category
+        set
+            category_name = #{categoryName},
+            category_sort = #{categorySort},
+            category_enabled = #{categoryEnabled}
+        where category_id = #{categoryId}
+    </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from article_category
+        where category_id = #{categoryId}
+    </delete>
+</mapper>

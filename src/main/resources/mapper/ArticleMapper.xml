@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luospace.blog.dao.ArticleMapper" >
+    <select id="select" parameterType="Map" resultType="com.luospace.blog.entity.Article"  >
+        SELECT *
+        FROM article
+        <where>
+            <if test="articleTitle != null">
+                article_title like '%#{articleTitle}%'
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="com.luospace.blog.entity.Article" useGeneratedKeys="true" keyProperty="articleId">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleTitle != null">
+                article_title,
+            </if>
+            <if test="articleDesc != null">
+                article_desc,
+            </if>
+            <if test="articleContent != null">
+                article_content,
+            </if>
+            <if test="articleImage != null">
+                article_image,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleTitle != null">
+                #{articleTitle},
+            </if>
+            <if test="articleDesc != null">
+                #{articleDesc},
+            </if>
+            <if test="articleContent != null">
+                #{articleContent},
+            </if>
+            <if test="articleImage != null">
+                #{articleImage},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+        </trim>
+
+    </insert>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.luospace.blog.entity.Article">
+        select *
+        from article
+        where article_id = #{articleId}
+    </select>
+    <update id="updateByPrimaryKey" parameterType="com.luospace.blog.entity.Article">
+        update article
+        set
+            article_title = #{articleTitle},
+            article_desc = #{articleDesc},
+            article_content = #{articleContent}
+        where article_id = #{articleId}
+    </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from article
+        where article_id = #{articleId}
+    </delete>
+</mapper>

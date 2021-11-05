@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="site/layout/default">
+<head>
+    <title>首页</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">
+                    <a class="link-secondary" href="#">订阅</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a class="blog-header-logo text-dark" href="#">LUO BLOG</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <a class="link-secondary" href="#" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+                    </a>
+
+                    <div class="dropdown dropdown-hover text-end profile">
+                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none text-small" aria-expanded="false">
+                            <img th:src="@{/site/img/avatar.jpeg}" alt="mdo" width="32" height="32" class="rounded-circle">
+                            <span class="m-1 text-secondary">年糕小痘痘</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 link-secondary" href="#" th:each="category:${articleCategories}" th:text="${category.categoryName}"></a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="rounded bg-dark">
+            <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F016095598904a2a801215603e8c38e.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638610999&t=48d9e4dc20fa15e686e2a8636d761e7e" class="img-fluid" alt="...">
+        </div>
+        <div class="row g-5">
+            <div class="col-md-8">
+
+                <article class="blog-post pt-4">
+                    <h2 class="blog-post-title">收购百世汇通，野蛮发展的极兔速递，将给我们消费者带来什么？</h2>
+                    <p>68亿元收购百世汇通，这只去年才进入快递业的急速兔子将整个快递业搅得风云变幻。 极兔速递在2015年8月，由OPPO印尼创始人李杰在当地成立，并很快成为东南亚头部快递公司，然后在去年三月份进入国内快递市场。</p>
+                </article>
+
+                <article class="blog-post">
+                    <h2 class="blog-post-title">业内人士揭电商预售乱象：秋衣冬收、春装夏至 玩的就是套路</h2>
+                    <p>央广网北京11月3日消息（总台央广记者管昕）11月1日零点，今年“双11”预售的尾款正式开始支付。实际上，从10月20日起，各大电商平台都已经开启了2021年“双11”预售活动。为了在“加长版”的“双11”获得更好的经营业绩，绝大多数商家都搞了预售活动。</p>
+                </article>
+
+                <article class="blog-post">
+                    <h2 class="blog-post-title">今日热点 | 微念持有李子柒公司股权冻结；腾讯：或实行965工作制</h2>
+                    <p>3日，天眼查显示，杭州微念品牌管理有限公司新增股权冻结信息，持其持有李子柒关联公司51万股权被冻结。股权冻结信息显示，被执行人为杭州微念，股权被执行的企业为四川子柒文化传播有限公司，执行法院为四川省绵阳市中级人民法院。冻结期限自2021年11月2日至2024年11月1日。天眼查股权穿透图显示，四川子柒文化传播有限公司成立于2017年7月，由杭州微念品牌管理有限公司和李佳佳（李子柒）分别持股51%、49%，法定代表人为李佳佳。四川子柒文化传播有限公司日前新增立案信息，一审被告为微念公司及刘同明。微念曾是李子柒的经纪公司。</p>
+                </article>
+
+                <nav class="blog-pagination" aria-label="Pagination">
+                    <a class="btn btn-outline-primary" href="#">Older</a>
+                    <a class="btn btn-outline-secondary">Newer</a>
+                </nav>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div class="p-4 mb-3 bg-light rounded">
+                        <h4 class="fst-italic">热点</h4>
+                        <p class="mb-0">姆巴佩欧冠这球太顶了！疾风电闪般狂飙60米扫过半场，对手愣是追不上，不过这最后一脚的感觉稍差了点！
+                            先来看看大巴黎神锋姆巴佩这次疯狂的助攻表演，一个健步就闪出了莱比锡防线，准确地横传中路完成了漂亮的助攻。
+                            再看看这次单刀球，这速度也太快了吧，对手拼了也追不上，这本该是他一个漂亮的单刀球，可惜最后一脚射门差了些感觉。
+                            这位年轻人真是太厉害了！这速度绝对是他征服足坛的绝技，如果他能再打磨下射术就完美了！看起来，他距离金球奖已经不远了！</p>
+                    </div>
+
+                    <div class="p-4">
+                        <h4 class="fst-italic">排行</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li><a href="#">最强寒潮来袭</a></li>
+                            <li><a href="#">美海军拦截邮轮对峙现场曝光</a></li>
+                            <li><a href="#">男子办婚礼邀请同事被举报</a></li>
+                            <li><a href="#">辽宁新增1例本土确诊 在大连</a></li>
+                            <li><a href="#">拜登的两大峰会之旅 欲速而不达</a></li>
+                            <li><a href="#">河北昨增23例本土确诊 石家庄20例</a></li>
+                            <li><a href="#">安徽公安厅原常务副厅长陈小平被查</a></li>
+                            <li><a href="#">华为：没有退路就是胜利之路</a></li>
+                            <li><a href="#">张明池CBA首秀砍16分 广东队内最高</a></li>
+                            <li><a href="#">解放军进行渡河作战演练 现场曝光</a></li>
+                        </ol>
+                    </div>
+
+                    <div class="p-4">
+                        <h4 class="fst-italic">Elsewhere</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#">GitHub</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="blog-footer">
+        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+</th:block>
+</body>
+</html>

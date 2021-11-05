@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luospace.blog.dao.UserMapper" >
+    <select id="getUserById" resultType="com.luospace.blog.entity.User"  >
+        SELECT *
+        FROM user
+        WHERE
+            id = #{id}
+    </select>
+    <select id="getUserByName" resultType="com.luospace.blog.entity.User">
+        select * from user where name = #{name}
+    </select>
+    <select id="getUserByNameAndPassword" resultType="com.luospace.blog.entity.User">
+        select * from user where name = #{name} and password = #{password}
+    </select>
+    <insert id="insert" parameterType="com.luospace.blog.entity.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.luospace.blog.entity.User">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="locked != null">
+                locked = #{locked},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
