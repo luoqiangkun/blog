@@ -14,4 +14,6 @@ public class Constants {
 
     public final static String KAPTCHA_SESSION_KEY = "kaptchaSesionKey"; //验证码
 
+    public final static String USER_SESSION_KEY = "userSessionKey";//用户信息
+
 }

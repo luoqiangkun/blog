@@ -9,7 +9,7 @@
 <body>
 <th:block layout:fragment="content">
     <div class="container">
-        <header class="blog-header py-3">
+        <header class="blog-header py-3 sticky-top">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
                     <a class="link-secondary" href="#">订阅</a>
@@ -21,20 +21,23 @@
                     <a class="link-secondary" href="#" aria-label="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
                     </a>
-
-                    <div class="dropdown dropdown-hover text-end profile">
-                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none text-small" aria-expanded="false">
-                            <img th:src="@{/site/img/avatar.jpeg}" alt="mdo" width="32" height="32" class="rounded-circle">
-                            <span class="m-1 text-secondary">年糕小痘痘</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
-                        </ul>
-                    </div>
+                    <th:block th:unless="${session.userSessionKey==null}">
+                        <div class="dropdown dropdown-hover text-end profile">
+                            <a href="#" class="d-flex align-items-center link-dark text-decoration-none text-small" aria-expanded="false">
+                                <img th:src="@{/site/img/avatar.jpeg}" alt="mdo" width="32" height="32" class="rounded-circle">
+                                <span class="m-1 text-secondary">年糕小痘痘</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end text-small pt-2">
+                                <li><a class="dropdown-item" href="#">个人中心</a></li>
+                                <li><a class="dropdown-item" href="#">我的收藏</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </th:block>
+                    <th:block th:if="${session.userSessionKey==null}">
+                        <a th:href="@{/login}" class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                    </th:block>
                 </div>
             </div>
         </header>
@@ -51,27 +54,14 @@
         </div>
         <div class="row g-5">
             <div class="col-md-8">
-
-                <article class="blog-post pt-4">
-                    <h2 class="blog-post-title">收购百世汇通，野蛮发展的极兔速递，将给我们消费者带来什么？</h2>
-                    <p>68亿元收购百世汇通，这只去年才进入快递业的急速兔子将整个快递业搅得风云变幻。 极兔速递在2015年8月，由OPPO印尼创始人李杰在当地成立，并很快成为东南亚头部快递公司，然后在去年三月份进入国内快递市场。</p>
+                <article class="blog-post pt-4" th:each="article:${articles}">
+                    <h2 class="blog-post-title" th:text="${article.articleTitle}"></h2>
+                    <p th:text="${article.articleDesc}"></p>
                 </article>
-
-                <article class="blog-post">
-                    <h2 class="blog-post-title">业内人士揭电商预售乱象：秋衣冬收、春装夏至 玩的就是套路</h2>
-                    <p>央广网北京11月3日消息（总台央广记者管昕）11月1日零点，今年“双11”预售的尾款正式开始支付。实际上，从10月20日起，各大电商平台都已经开启了2021年“双11”预售活动。为了在“加长版”的“双11”获得更好的经营业绩，绝大多数商家都搞了预售活动。</p>
-                </article>
-
-                <article class="blog-post">
-                    <h2 class="blog-post-title">今日热点 | 微念持有李子柒公司股权冻结；腾讯：或实行965工作制</h2>
-                    <p>3日，天眼查显示，杭州微念品牌管理有限公司新增股权冻结信息，持其持有李子柒关联公司51万股权被冻结。股权冻结信息显示，被执行人为杭州微念，股权被执行的企业为四川子柒文化传播有限公司，执行法院为四川省绵阳市中级人民法院。冻结期限自2021年11月2日至2024年11月1日。天眼查股权穿透图显示，四川子柒文化传播有限公司成立于2017年7月，由杭州微念品牌管理有限公司和李佳佳（李子柒）分别持股51%、49%，法定代表人为李佳佳。四川子柒文化传播有限公司日前新增立案信息，一审被告为微念公司及刘同明。微念曾是李子柒的经纪公司。</p>
-                </article>
-
                 <nav class="blog-pagination" aria-label="Pagination">
                     <a class="btn btn-outline-primary" href="#">Older</a>
                     <a class="btn btn-outline-secondary">Newer</a>
                 </nav>
-
             </div>
 
             <div class="col-md-4">

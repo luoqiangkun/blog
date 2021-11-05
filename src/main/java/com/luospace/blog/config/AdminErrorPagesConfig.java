@@ -6,7 +6,6 @@ import org.springframework.boot.web.server.ErrorPageRegistry;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 
-@Configuration
 public class AdminErrorPagesConfig implements ErrorPageRegistrar {
     @Override
     public void registerErrorPages(ErrorPageRegistry registry){

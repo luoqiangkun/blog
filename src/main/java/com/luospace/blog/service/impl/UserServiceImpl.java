@@ -1,5 +1,6 @@
 package com.luospace.blog.service.impl;
 
+import com.luospace.blog.common.Constants;
 import com.luospace.blog.common.Result;
 import com.luospace.blog.dao.UserMapper;
 import com.luospace.blog.entity.User;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
     public Result login(String name, String password, HttpSession session){
         User user = userMapper.getUserByNameAndPassword(name, MD5Util.getMD5(password));
         if(user != null){
-            session.setAttribute("userid",user.getId());
+            session.setAttribute(Constants.USER_SESSION_KEY,user);
             return Result.success(user);
         }else{
             return Result.failed("用户名或密码错误");

@@ -21,9 +21,6 @@ public class AdminController {
 
     @GetMapping({"", "/", "/index", "/index.html"})
     public String index(HttpSession session, Model model){
-        Integer userid = (Integer) session.getAttribute("userid");
-        User user = userService.getUserById(userid);
-        model.addAttribute("user",user);
         return "admin/index";
     }
 
