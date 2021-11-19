@@ -1,10 +1,10 @@
 package com.luospace.blog.config;
 
 import com.luospace.blog.interceptor.AdminInterceptor;
+import com.luospace.blog.interceptor.SiteInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
@@ -13,6 +13,9 @@ import javax.annotation.Resource;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Resource
     AdminInterceptor adminInterceptor;
+
+    @Resource
+    SiteInterceptor siteInterceptor;
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(adminInterceptor)
                 .addPathPatterns("/admin/**")
@@ -23,6 +26,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/admin/js/**")
                 .excludePathPatterns("/admin/img/**")
                 .excludePathPatterns("/admin/plugins/**");
+        registry.addInterceptor(siteInterceptor);
     }
 
 

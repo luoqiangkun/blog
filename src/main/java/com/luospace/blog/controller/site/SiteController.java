@@ -5,10 +5,11 @@ import com.luospace.blog.common.QueryParams;
 import com.luospace.blog.common.Result;
 import com.luospace.blog.entity.Article;
 import com.luospace.blog.entity.ArticleCategory;
-import com.luospace.blog.entity.User;
 import com.luospace.blog.service.ArticleCategoryService;
 import com.luospace.blog.service.ArticleService;
 import com.luospace.blog.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -18,8 +19,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+
 @Controller
 public class SiteController {
+
+    protected static Logger logger = LoggerFactory.getLogger(SiteController.class);
 
     @Resource
     UserService userService;
@@ -30,23 +34,16 @@ public class SiteController {
     @Resource
     ArticleCategoryService articleCategoryService;
 
-    @GetMapping("/index")
+    @GetMapping({"", "/", "/index", "/index.html"})
     public String index(HttpSession session, Model model){
-        //用户数据
-        int userid = (int)session.getAttribute("userid");
-        if(userid > 0){
-            model.addAttribute("isLogin",true);
-            User user = userService.getUserById(userid);
-            model.addAttribute("user",user);
-        }else{
-            model.addAttribute("isLogin",false);
-        }
         //获取分类列表
         List<ArticleCategory> articleCategories = articleCategoryService.list(new QueryParams());
         model.addAttribute("articleCategories",articleCategories);
         //获取文章列表
         List<Article> articles = articleService.list(new QueryParams());
         model.addAttribute("articles",articles);
+
+        logger.info("Hello world");
         return "/site/index";
     }
 

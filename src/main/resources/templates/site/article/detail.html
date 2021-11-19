@@ -4,33 +4,20 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="site/layout/default">
 <head>
-    <title>首页</title>
+    <title>新闻详情</title>
 </head>
 <body>
 <main class="container" layout:fragment="content">
-    <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#" th:each="category:${articleCategories}" th:text="${category.categoryName}"></a>
-        </nav>
-    </div>
-    <div class="rounded bg-dark">
-        <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F016095598904a2a801215603e8c38e.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638610999&t=48d9e4dc20fa15e686e2a8636d761e7e" class="img-fluid" alt="...">
-    </div>
     <div class="row g-5">
         <div class="col-md-8">
-            <article class="blog-post pt-4" th:each="article:${articles}">
-                <a th:href="@{'/article/' + ${article.articleId}}">
-                    <h2 class="blog-post-title" th:text="${article.articleTitle}"></h2>
-                    <p th:text="${article.articleDesc}"></p>
-                </a>
+            <article class="blog-post pt-4">
+                <h2 class="blog-post-title" th:text="${article.articleTitle}"></h2>
+                <p th:text="${article.articleDesc}"></p>
+                <p th:utext="${article.articleContent}"></p>
             </article>
-            <nav class="blog-pagination" aria-label="Pagination">
-                <a class="btn btn-outline-primary" href="#">Older</a>
-                <a class="btn btn-outline-secondary">Newer</a>
-            </nav>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 pt-3" >
             <div class="position-sticky" style="top: 2rem;">
                 <div class="p-4 mb-3 bg-light rounded">
                     <h4 class="fst-italic">热点</h4>

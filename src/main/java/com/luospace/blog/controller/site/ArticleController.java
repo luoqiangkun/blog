@@ -1,31 +1,31 @@
 package com.luospace.blog.controller.site;
 
-import com.luospace.blog.common.Result;
 import com.luospace.blog.entity.Article;
 import com.luospace.blog.service.ArticleService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
+@Controller
 public class ArticleController {
-
     @Resource
     ArticleService articleService;
-
+    @ResponseBody
+    @GetMapping("/test")
     public String index(){
-        return "/site/article/index";
+        return "index";
     }
 
-    @GetMapping("/article")
-    public String detail(@RequestParam("id") int id, Model model){
-        Article article = articleService.get(id);
+    @RequestMapping("/article/{articleId}")
+    public String detail(@PathVariable("articleId") Integer articleId, Model model){
+        //获取文章详情
+        Article article = articleService.get(articleId);
         model.addAttribute("article",article);
         return "/site/article/detail";
-    }
-
-    public Result list(){
-        return Result.success(null);
     }
 }

@@ -19,7 +19,7 @@ public class AdminController {
     @Resource
     UserService userService;
 
-    @GetMapping({"", "/", "/index", "/index.html"})
+    @GetMapping("/index")
     public String index(HttpSession session, Model model){
         return "admin/index";
     }

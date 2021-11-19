@@ -35,8 +35,7 @@ $(function () {
                 required: "请输入用户名"
             },
             password: {
-                required: "请输入密码",
-                minlength: "密码的长度最少为5"
+                required: "请输入密码"
             },
             captcha: {
                 required: "请输入验证码"
@@ -44,7 +43,6 @@ $(function () {
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {
-            alert( 1 )
             error.addClass('invalid-feedback');
             element.closest('.form-floating').append(error);
         },

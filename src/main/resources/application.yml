@@ -9,7 +9,13 @@ spring:
       enabled: true
   thymeleaf:
     cache: false
+  redis:
+    host: 127.0.0.1
+    port: 6379
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
+logging:
+  file:
+    path: /Users/luoqiangkun/IdeaProjects/blog/
